@@ -582,7 +582,6 @@ footer {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
 }
 
 .profile-header {
@@ -613,7 +612,7 @@ footer {
 
 .stats {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 20px;
 }
 
@@ -660,7 +659,6 @@ footer {
   margin: 0 10px;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   font-weight: bold;
   transition: 0.3s; /* Düymələrin üzərinə gələndə rəngi yumşaq dəyişsin */
 }
