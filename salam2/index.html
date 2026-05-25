@@ -236,5 +236,51 @@
         </div>
 
     </footer>
+<script>
+        function yoxla() {
+            // Axtarış sahəsinə yazılan mətni götürürük və hərfləri kiçildirik
+            let input = document.getElementById("searchInput").value.toLowerCase().trim();
+            
+            // Bütün məqalə kartlarını seçirik
+            let cards = document.querySelectorAll(".cards .card");
+            
+            // "Məqalə tapılmadı" mesajını seçirik
+            let notFound = document.getElementById("notFound");
+            
+            let tapildi = false;
+
+            // Hər bir kartı tək-tək yoxlayırıq
+            cards.forEach(card => {
+                // Kartın daxilindəki başlığı (h3) tapırıq
+                let basliq = card.querySelector("h3").innerText.toLowerCase();
+                // Kartın daxilindəki müəllif adını tapırıq
+                let muellif = card.querySelector(".muellif-adi h4").innerText.toLowerCase();
+                // Kartın daxilindəki qısa mətni tapırıq
+                let metn = card.querySelector("p").innerText.toLowerCase();
+
+                // Əgər axtarılan söz başlıqda, müəllif adında və ya mətndə varsa
+                if (basliq.includes(input) || muellif.includes(input) || metn.includes(input)) {
+                    card.style.display = "flex"; // Kartı göstər (CSS dizaynınıza uyğun olaraq block da edə bilərsiniz)
+                    tapildi = true;
+                } else {
+                    card.style.display = "none"; // Uyğun gəlmirsə gizlət
+                }
+            });
+
+            // Əgər heç bir məqalə tapılmadısa, mesajı göstər, tapıldısa gizlət
+            if (tapildi) {
+                notFound.style.display = "none";
+            } else {
+                notFound.style.display = "block";
+            }
+        }
+
+        // İSTİFADƏÇİ "ENTER" DÜYMƏSİNƏ BASANDA DA AXTARIŞ ETSİN:
+        document.getElementById("searchInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                yoxla();
+            }
+        });
+    </script>
 </body>
 </html>
